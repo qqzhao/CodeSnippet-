@@ -18,11 +18,16 @@ var SafariAudioPlayer = (function() {
      * 如果其他浏览器进行WebAudio的话，这里状态就可能变成interrupted。这里进行恢复。
      * @type {[type]}
      */
-    setInterval(function() {
+    /*setInterval(function() {
       if (myAudioContext.state === 'interrupted') {
         myAudioContext.resume();
       }
-    }, 3000);
+    }, 3000);*/
+    window.onfocus = function(){
+        if (myAudioContext.state === 'interrupted') {
+             myAudioContext.resume();
+         }
+    }
 
     var init = function init(audioPath) {
         if (typeof myAudioContext === 'undefined') {
